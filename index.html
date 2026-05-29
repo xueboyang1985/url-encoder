@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>URL Encoder Decoder — Encode & Decode URLs Online Free (2026)</title>
+<meta name="description" content="Encode and decode URLs online for free. Convert text to URL-encoded format and decode URL-encoded strings back. 100% browser-based, no upload, no tracking.">
+<link rel="canonical" href="https://xueboyang1985.github.io/url-encoder/">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#f8fafc;color:#1a1a1a;min-height:100vh;}
+.container{max-width:960px;margin:0 auto;padding:20px;}
+h1{text-align:center;font-size:28px;margin:20px 0;background:linear-gradient(135deg,#6366f1,#e94560);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px;align-items:center;}
+.toolbar button{padding:8px 20px;border:none;border-radius:6px;font-size:14px;cursor:pointer;font-weight:600;transition:all 0.15s;}
+.btn-primary{background:#6366f1;color:white;}.btn-primary:hover{background:#4f46e5;}
+.btn-success{background:#10b981;color:white;}.btn-success:hover{background:#059669;}
+.btn-warning{background:#f59e0b;color:white;}.btn-warning:hover{background:#d97706;}
+.btn-outline{background:white;color:#475569;border:1px solid #d1d5db;}.btn-outline:hover{background:#f1f5f9;}
+.toolbar .stats{margin-left:auto;font-size:13px;color:#64748b;display:flex;gap:16px;}
+.editor{display:grid;grid-template-columns:1fr 1fr;gap:12px;min-height:500px;}
+.pane{display:flex;flex-direction:column;}
+.pane label{font-size:13px;font-weight:600;color:#475569;margin-bottom:4px;}
+.pane textarea{flex:1;font-family:'JetBrains Mono','Fira Code','Consolas',monospace;font-size:13px;padding:12px;border:1px solid #d1d5db;border-radius:8px;resize:none;outline:none;line-height:1.6;tab-size:2;background:#fafafa;}
+.pane textarea:focus{border-color:#6366f1;box-shadow:0 0 0 3px rgba(99,102,241,0.1);}
+.pane .output{border:1px solid #d1d5db;border-radius:8px;padding:12px;background:#fafafa;font-family:'JetBrains Mono','Fira Code','Consolas',monospace;font-size:13px;line-height:1.6;white-space:pre-wrap;overflow:auto;flex:1;tab-size:2;}
+.mode-select{display:flex;gap:12px;margin-bottom:10px;}
+.mode-select label{font-size:13px;display:flex;align-items:center;gap:4px;cursor:pointer;color:#475569;}
+.mode-select input[type=radio]{accent-color:#6366f1;}
+.pro-banner{text-align:center;background:linear-gradient(135deg,#eef2ff,#f8fafc);border:2px solid #e0e7ff;border-radius:12px;padding:20px;margin:16px 0;}
+.pro-banner h3{font-size:16px;margin-bottom:6px;color:#4338ca;}
+.pro-banner p{font-size:13px;color:#475569;margin-bottom:10px;}
+.pro-banner .buy-btn{background:#6366f1;color:white;padding:10px 28px;border-radius:8px;text-decoration:none;font-weight:600;display:inline-block;}
+.status-msg{font-size:13px;color:#6366f1;text-align:center;margin-top:8px;min-height:20px;}
+.hidden{display:none;}
+.footer{text-align:center;padding:30px 0;color:#94a3b8;font-size:12px;}
+.footer a{color:#6366f1;text-decoration:none;}
+.cross-promo{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:20px 0;}
+.cross-promo a{background:white;border:1px solid #e2e8f0;border-radius:8px;padding:8px 16px;text-decoration:none;font-size:13px;color:#475569;transition:all 0.15s;}
+.cross-promo a:hover{border-color:#6366f1;color:#6366f1;}
+@media(max-width:700px){.editor{grid-template-columns:1fr;min-height:400px;}.toolbar .stats{margin-left:0;width:100%;}}
+</style>
+</head>
+<body>
+<div class="container">
+<h1>URL Encoder Decoder</h1>
+<p style="text-align:center;color:#64748b;margin-bottom:20px;">Encode text for URLs or decode URL-encoded strings — 100% browser-based, nothing uploaded</p>
+
+<div id="proStatus" class="pro-banner hidden">
+<h3>PRO Unlocked</h3>
+<p>Unlimited URL encoding/decoding, no character limits, priority support.</p>
+</div>
+
+<div class="toolbar">
+<button class="btn-primary" onclick="encode()">Encode</button>
+<button class="btn-warning" onclick="decode()">Decode</button>
+<button class="btn-outline" onclick="copyResult()">Copy Output</button>
+<button class="btn-outline" onclick="clearAll()">Clear</button>
+<button id="buyBtn" class="btn-success" onclick="buyPRO()">PRO $9.99</button>
+<div class="stats"><span id="inStats">Input: 0 chars</span><span id="outStats">Output: 0 chars</span></div>
+</div>
+
+<div class="mode-select">
+<label><input type="radio" name="mode" value="component" checked> Encode/Decode Component</label>
+<label><input type="radio" name="mode" value="full"> Encode/Decode Full URL</label>
+</div>
+
+<div class="editor" id="editor">
+<div class="pane">
+<label for="input">Input Text</label>
+<textarea id="input" placeholder="Paste text or URL-encoded string here..." spellcheck="false"></textarea>
+</div>
+<div class="pane">
+<label>Output</label>
+<div class="output" id="output"></div>
+</div>
+</div>
+
+<div id="statusMsg" class="status-msg"></div>
+
+<div class="cross-promo">
+<a href="https://xueboyang1985.github.io/html-formatter/">HTML Formatter</a>
+<a href="https://xueboyang1985.github.io/css-minifier/">CSS Minifier</a>
+<a href="https://xueboyang1985.github.io/case-converter/">Case Converter</a>
+<a href="https://xueboyang1985.github.io/json-csv-converter/">JSON Formatter</a>
+<a href="https://xueboyang1985.github.io/base64-encoder/">Base64 Encoder</a>
+<a href="https://xueboyang1985.github.io/markdown-editor/">Markdown Editor</a>
+<a href="https://xueboyang1985.github.io/word-counter/">Word Counter</a>
+</div>
+
+<div class="pro-banner">
+<h3>PRO Version — No Limits, 100% Private</h3>
+<p>All tools run entirely in your browser. Your data never leaves your device. PRO removes all restrictions across 20+ tools with one license.</p>
+<a class="buy-btn" href="https://xuebo8.gumroad.com/l/skxcpj" onclick="window.open(this.href,'gumroad','width=600,height=700');return false;">Get Bundle $9.99</a>
+<p style="font-size:12px;color:#94a3b8;margin-top:6px;">&#8226; Lifetime access &#8226; 20+ tools &#8226; 3 devices &#8226; No subscription</p>
+</div>
+
+<div class="footer">
+<p>Free browser tool &bull; No upload &bull; No tracking &bull; <a href="https://xueboyang1985.github.io/free-browser-tools/">More Free Tools</a></p>
+</div>
+</div>
+
+<script>
+let isPRO = false;
+try { isPRO = localStorage.getItem('url_pro') === 'true'; } catch(e){}
+const PRO_PRODUCT_ID = 'xdlh1FHKAU0E7q3ZRuHPaw==';
+const FREE_LIMIT = 5000;
+
+function updatePROUI() {
+  const banner = document.getElementById('proStatus');
+  const buyBtn = document.getElementById('buyBtn');
+  if (isPRO) {
+    banner.classList.remove('hidden');
+    buyBtn.textContent = 'PRO ✓';
+    buyBtn.style.background = '#10b981';
+  } else {
+    banner.classList.add('hidden');
+    buyBtn.textContent = 'PRO $9.99';
+    buyBtn.style.background = '#10b981';
+  }
+}
+
+function buyPRO() {
+  if (isPRO) return;
+  const url = 'https://xuebo8.gumroad.com/l/skxcpj?product_id=' + PRO_PRODUCT_ID + '&license_key=true';
+  window.open(url, 'gumroad', 'width=600,height=700');
+}
+
+window.addEventListener('message', function(e) {
+  if (e.data && e.data.success && e.data.purchase) {
+    const key = e.data.purchase.license_key;
+    if (key) {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', 'https://api.gumroad.com/v2/licenses/verify', true);
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.onload = function() {
+        const r = JSON.parse(xhr.responseText);
+        if (r.success && r.purchase) {
+          isPRO = true;
+          try { localStorage.setItem('url_pro', 'true'); } catch(e){}
+          updatePROUI();
+          setStatus('PRO activated!');
+        }
+      };
+      xhr.send('product_id=' + encodeURIComponent(PRO_PRODUCT_ID) + '&license_key=' + encodeURIComponent(key));
+    }
+  }
+});
+
+function setStatus(msg) {
+  document.getElementById('statusMsg').textContent = msg;
+  setTimeout(() => { document.getElementById('statusMsg').textContent = ''; }, 3000);
+}
+
+function updateStats() {
+  const input = document.getElementById('input').value;
+  const out = document.getElementById('output').textContent;
+  document.getElementById('inStats').textContent = 'Input: ' + input.length + ' chars';
+  document.getElementById('outStats').textContent = 'Output: ' + out.length + ' chars';
+}
+
+function getMode() {
+  return document.querySelector('input[name="mode"]:checked').value;
+}
+
+function checkLimit(s) {
+  if (!isPRO && s.length > FREE_LIMIT) {
+    setStatus('Free limit: ' + FREE_LIMIT + ' chars. Get PRO for unlimited.');
+    return false;
+  }
+  return true;
+}
+
+function encode() {
+  const input = document.getElementById('input').value;
+  if (!input.trim()) { setStatus('Please enter some text'); return; }
+  if (!checkLimit(input)) return;
+  const mode = getMode();
+  try {
+    const result = mode === 'component' ? encodeURIComponent(input) : encodeURI(input);
+    document.getElementById('output').textContent = result;
+    updateStats();
+    setStatus('Encoded!');
+  } catch(e) {
+    setStatus('Encode failed: ' + e.message);
+  }
+}
+
+function decode() {
+  const input = document.getElementById('input').value;
+  if (!input.trim()) { setStatus('Please enter some text'); return; }
+  if (!checkLimit(input)) return;
+  const mode = getMode();
+  try {
+    const result = mode === 'component' ? decodeURIComponent(input) : decodeURI(input);
+    document.getElementById('output').textContent = result;
+    updateStats();
+    setStatus('Decoded!');
+  } catch(e) {
+    setStatus('Decode failed: ' + e.message + '. Make sure the input is properly URL-encoded.');
+  }
+}
+
+function copyResult() {
+  const text = document.getElementById('output').textContent;
+  if (!text) { setStatus('Nothing to copy'); return; }
+  navigator.clipboard.writeText(text).then(() => setStatus('Copied!')).catch(() => setStatus('Copy failed'));
+}
+
+function clearAll() {
+  document.getElementById('input').value = '';
+  document.getElementById('output').textContent = '';
+  updateStats();
+}
+
+updatePROUI();
+updateStats();
+document.getElementById('input').addEventListener('input', updateStats);
+</script>
+</body>
+</html>
